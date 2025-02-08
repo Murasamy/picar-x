@@ -3,7 +3,7 @@ import time
 
 POWER = 50
 SafeDistance = 40   # > 40 safe
-DangerDistance = 20 # > 20 && < 40 turn around, 
+DangerDistance = 25 # > 20 && < 40 turn around, 
                     # < 20 backward
 
 def main():
