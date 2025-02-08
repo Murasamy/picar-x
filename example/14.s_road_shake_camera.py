@@ -12,12 +12,13 @@ DangerDistance = 25 # > 20 && < 40 turn around,
 music = Music()
 tts = TTS()
 music.music_set_volume(20)
+print("Press 'q' to exit")
 
 def main():
     try:
         px = Picarx()
         # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
-        music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')
+        # music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')
        
         while True:
             distance = round(px.ultrasonic.read(), 2)
