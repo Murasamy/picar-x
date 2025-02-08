@@ -1,20 +1,30 @@
 from picarx import Picarx
 import time
+from time import sleep
+from robot_hat import Music,TTS
+import readchar
+from os import geteuid
 
 POWER = 50
 DangerDistance = 25 # > 20 && < 40 turn around, 
                     # < 20 backward
 
+music = Music()
+tts = TTS()
+music.music_set_volume(20)
+
 def main():
     try:
         px = Picarx()
         # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo
+        music.music_play('../musics/slow-trail-Ahjay_Stelino.mp3')
        
         while True:
             distance = round(px.ultrasonic.read(), 2)
             print("distance: ",distance)
             if distance <=  DangerDistance: 
                 px.stop()
+                music.music_stop()
             # test motor
             px.forward(30)
             time.sleep(0.5)
@@ -33,6 +43,7 @@ def main():
     finally:
         px.stop()
         time.sleep(0.2)
+        music.music_stop()
         
 
 
