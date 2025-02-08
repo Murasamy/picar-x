@@ -23,8 +23,10 @@ def main():
             distance = round(px.ultrasonic.read(), 2)
             print("distance: ",distance)
             if distance <=  DangerDistance: 
+
                 px.stop()
                 music.music_stop()
+                break
             # test motor
             px.forward(30)
             time.sleep(0.5)
