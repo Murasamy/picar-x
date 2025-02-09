@@ -14,6 +14,7 @@ def main():
             print("distance: ",distance)
             if distance <=  DangerDistance: 
                 px.stop()
+                break
             # test motor
             px.forward(30)
             time.sleep(0.5)

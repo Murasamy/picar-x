@@ -33,6 +33,7 @@ if __name__ == "__main__":
                 if 'w' == key:
                     px.set_dir_servo_angle(0)
                     px.forward(80)
+                    sleep(0.1)
                 elif 's' == key:
                     px.set_dir_servo_angle(0)
                     px.backward(80)
