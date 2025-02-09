@@ -1,7 +1,7 @@
 from picarx import Picarx
 import time
 
-POWER = 50
+POWER = 100
 SafeDistance = 40   # > 40 safe
 DangerDistance = 25 # > 20 && < 40 turn around, 
                     # < 20 backward
