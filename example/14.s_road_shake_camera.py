@@ -6,6 +6,7 @@ DangerDistance = 25 # > 20 && < 40 turn around,
                     # < 20 backward
 counter = 0
 def main():
+    global counter
     try:
         px = Picarx()
         # px = Picarx(ultrasonic_pins=['D2','D3']) # tring, echo       
