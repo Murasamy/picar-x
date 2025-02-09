@@ -4,7 +4,7 @@ import time
 POWER = 50
 DangerDistance = 25 # > 20 && < 40 turn around, 
                     # < 20 backward
-
+counter = 0
 def main():
     try:
         px = Picarx()
@@ -13,6 +13,8 @@ def main():
             distance = round(px.ultrasonic.read(), 2)
             print("distance: ",distance)
             if distance <=  DangerDistance: 
+                counter += 1
+            if counter >= 2:
                 px.stop()
                 break
             # test motor
