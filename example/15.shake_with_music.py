@@ -12,7 +12,7 @@ if geteuid() != 0:
 music = Music()
 tts = TTS()
 
-POWER = 50
+POWER = 30
 
 DangerDistance = 25 # > 20 && < 40 turn around, 
                     # < 20 backward
