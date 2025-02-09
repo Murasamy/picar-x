@@ -68,7 +68,7 @@ def main():
                 play_music()
                 break
             # test motor
-            px.forward(30)
+            px.forward(10)
             time.sleep(0.5)
             # test direction servo
             for angle in range(0, 35):
