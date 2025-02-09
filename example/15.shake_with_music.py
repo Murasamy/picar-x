@@ -21,7 +21,7 @@ counter = 0
 def play_music():
     print("play music")
     flag_bgm = False
-    music.music_set_volume(20)
+    music.music_set_volume(40)
     tts.lang("en-US")
 
     while True:

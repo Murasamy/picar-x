@@ -24,7 +24,7 @@ def main():
             else:
                 px.set_dir_servo_angle(-30)
                 px.backward(POWER)
-                time.sleep(0.5)
+                time.sleep(0.8)
 
     finally:
         px.forward(0)
