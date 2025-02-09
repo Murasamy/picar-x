@@ -13,10 +13,13 @@ music = Music()
 tts = TTS()
 
 POWER = 50
+
 DangerDistance = 25 # > 20 && < 40 turn around, 
                     # < 20 backward
 counter = 0
+
 def play_music():
+    print("play music")
     flag_bgm = False
     music.music_set_volume(20)
     tts.lang("en-US")
@@ -60,6 +63,7 @@ def main():
             if distance <=  DangerDistance: 
                 counter += 1
             if counter >= 2:
+                print('play_music')
                 px.stop()
                 play_music()
                 break
