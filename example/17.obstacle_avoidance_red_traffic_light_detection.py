@@ -55,6 +55,7 @@ def main():
                     h = Vilib.color_obj_parameter['h']
                     print(f"stop traffic sign detected, x: {x}, y: {y}, w: {w}, h: {h}")
                     px.stop()
+                    time.sleep(2)
 
             if distance >= SafeDistance:
                 px.set_dir_servo_angle(0)
