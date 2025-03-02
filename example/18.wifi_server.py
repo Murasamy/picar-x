@@ -14,20 +14,41 @@ def Keyborad_control(key):
     if key == b'87': # w
         px.set_dir_servo_angle(0)
         px.forward(80)
-        sleep(0.1)
+        sleep(0.5)
         px.forward(0)
     elif key == b'65': # a
         px.set_dir_servo_angle(-30)
-        px.forward(80)  
+        px.forward(80)
+        sleep(0.5)  
         px.forward(0)    
     elif key == b'83': # s
         px.set_dir_servo_angle(0)
         px.backward(80)
+        sleep(0.5)
         px.forward(0)
     elif key == b'68': # d
         px.set_dir_servo_angle(30)
         px.forward(80)
         px.forward(0)
+    elif key == b'73': # i
+        tilt_angle+=5
+        if tilt_angle>30:
+            tilt_angle=30
+    elif key == b'75': # k
+        tilt_angle-=5
+        if tilt_angle<-30:
+            tilt_angle=-30
+    elif key == b'76': # l
+        pan_angle+=5
+        if pan_angle>30:
+            pan_angle=30
+    elif key == b'74': # j
+        pan_angle-=5
+        if pan_angle<-30:
+            pan_angle=-30  
+    px.set_cam_tilt_angle(tilt_angle)
+    px.set_cam_pan_angle(pan_angle)     
+    
         
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
