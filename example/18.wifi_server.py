@@ -2,6 +2,7 @@ import socket
 from picarx import Picarx
 from time import sleep
 import readchar
+import sys
 
 HOST = "192.168.119.171" # IP address of your Raspberry PI
 PORT = 65431          # Port to listen on (non-privileged ports are > 1023)
@@ -63,8 +64,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 print(data)     
                 Keyborad_control(data)
                 client.sendall(data) # Echo back to client
-    except: 
+    except:
+
         print("Closing socket")
+        # print error message
+        print("Unexpected error:", sys.exc_info()[0])
         client.close()
         s.close()  
     finally:
