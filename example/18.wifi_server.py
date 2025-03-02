@@ -10,6 +10,8 @@ px = Picarx()
 
 def Keyborad_control(key):
     global power_val
+    global pan_angle
+    global tilt_angle
     print("key[0],key[1],key",key[0],key[1],key)
 
     if key == b'87': # w
