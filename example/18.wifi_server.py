@@ -59,6 +59,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.listen()
 
     try:
+        pan_angle = 0
+        tilt_angle = 0
         while 1:
             client, clientInfo = s.accept()
             print("server recv from: ", clientInfo)
