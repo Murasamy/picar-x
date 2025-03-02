@@ -35,20 +35,22 @@ def Keyborad_control(key):
         tilt_angle+=5
         if tilt_angle>30:
             tilt_angle=30
+        px.set_cam_tilt_angle(tilt_angle)
     elif key == b'75': # k
         tilt_angle-=5
         if tilt_angle<-30:
             tilt_angle=-30
+        px.set_cam_tilt_angle(tilt_angle)
     elif key == b'76': # l
         pan_angle+=5
         if pan_angle>30:
             pan_angle=30
+        px.set_cam_pan_angle(pan_angle) 
     elif key == b'74': # j
         pan_angle-=5
         if pan_angle<-30:
             pan_angle=-30  
-    # px.set_cam_tilt_angle(tilt_angle)
-    # px.set_cam_pan_angle(pan_angle)     
+        px.set_cam_pan_angle(pan_angle)     
     
         
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
