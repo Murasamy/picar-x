@@ -30,6 +30,7 @@ def Keyborad_control(key):
     elif key == b'68': # d
         px.set_dir_servo_angle(30)
         px.forward(80)
+        sleep(0.5)
         px.forward(0)
     elif key == b'73': # i
         tilt_angle+=5
