@@ -24,8 +24,6 @@ def Keyborad_control(key):
     elif key == b'68':
         px.set_dir_servo_angle(30)
         px.forward(80)
-    else:
-        px.stop()
         
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
@@ -38,7 +36,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = client.recv(1024)      # receive 1024 Bytes of message in binary format
             if data != b"":
                 print(data)     
-                print(data == b'87')
+                Keyborad_control(data)
                 client.sendall(data) # Echo back to client
     except: 
         print("Closing socket")
