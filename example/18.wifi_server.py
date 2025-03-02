@@ -4,7 +4,7 @@ from time import sleep
 import readchar
 
 HOST = "192.168.119.171" # IP address of your Raspberry PI
-PORT = 65432          # Port to listen on (non-privileged ports are > 1023)
+PORT = 65431          # Port to listen on (non-privileged ports are > 1023)
 px = Picarx()
 
 def Keyborad_control(key):
