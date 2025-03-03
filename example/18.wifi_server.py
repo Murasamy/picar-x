@@ -5,6 +5,7 @@ import readchar
 import sys
 import subprocess
 import os
+import json
 
 HOST = "192.168.119.171" # IP address of your Raspberry PI
 PORT = 65431          # Port to listen on (non-privileged ports are > 1023)
@@ -53,6 +54,7 @@ def pi_read():
         "disk": disk_space(), 
         "ram": ram_info(), 
     }
+    json.dumps(result)
     return result 
 
 def Keyborad_control(key):
@@ -112,12 +114,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         tilt_angle = 0
         while 1:
             client, clientInfo = s.accept()
-            print("server recv from: ", clientInfo)
+            # print("server recv from: ", clientInfo)
             data = client.recv(1024)      # receive 1024 Bytes of message in binary format
             if data != b"":
-                print(data)     
+                # print(data)     
                 Keyborad_control(data)
                 client.sendall(data) # Echo back to client
+                print("pi_read:", pi_read())
     except:
 
         print("Closing socket")
