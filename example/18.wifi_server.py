@@ -52,7 +52,7 @@ def pi_read():
     result = {
         "cpu_temperature": cpu_temperature(), 
         "gpu_temperature": gpu_temperature(),
-        "cpu_usage": cpu_usage(), 
+        # "cpu_usage": cpu_usage(), 
         "disk": disk_space(), 
         "ram": ram_info(), 
     }
