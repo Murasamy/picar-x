@@ -3,10 +3,57 @@ from picarx import Picarx
 from time import sleep
 import readchar
 import sys
+import subprocess
+import os
 
 HOST = "192.168.119.171" # IP address of your Raspberry PI
 PORT = 65431          # Port to listen on (non-privileged ports are > 1023)
 px = Picarx()
+
+def cpu_temperature():
+    raw_cpu_temperature = subprocess.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
+    cpu_temperature = round(float(raw_cpu_temperature)/1000,2)               # convert unit
+    return cpu_temperature
+
+def gpu_temperature():
+    raw_gpu_temperature = subprocess.getoutput( 'vcgencmd measure_temp' )
+    gpu_temperature = round(float(raw_gpu_temperature.replace( 'temp=', '' ).replace( '\'C', '' )), 2)
+    return gpu_temperature
+
+def cpu_usage():
+    result = os.popen("mpstat").read().strip()
+    result = result.split('\n')[-1].split(' ')[-1]
+    result = round(100 - float(result), 2)
+    result = str(result)
+    return result
+
+def disk_space():               # disk_space
+    p = os.popen("df -h /")
+    i = 0
+    while 1:
+        i = i +1
+        line = p.readline()         
+        if i==2:
+            return line.split()[1:5]    
+
+def ram_info():
+    p = os.popen('free')
+    i = 0
+    while 1:
+        i = i + 1
+        line = p.readline()
+        if i==2:
+            return list(map(lambda x:round(int(x) / 1000,1), line.split()[1:4]))   
+
+def pi_read():
+    result = {
+        "cpu_temperature": cpu_temperature(), 
+        "gpu_temperature": gpu_temperature(),
+        "cpu_usage": cpu_usage(), 
+        "disk": disk_space(), 
+        "ram": ram_info(), 
+    }
+    return result 
 
 def Keyborad_control(key):
     global power_val
