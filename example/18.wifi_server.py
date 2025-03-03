@@ -127,7 +127,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
         print("Closing socket")
         # print error message
-        print("Unexpected error:", sys.exc_info()[0])
+        print("Unexpected error:", sys.exc_info())
         client.close()
         s.close()  
     finally:
