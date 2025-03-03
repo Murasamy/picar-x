@@ -56,7 +56,7 @@ def pi_read():
         "disk": disk_space(), 
         "ram": ram_info(), 
     }
-    json.dumps(result)
+    result = json.dumps(result)
     return result 
 
 def Keyborad_control(key):
