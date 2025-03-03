@@ -14,19 +14,21 @@ px = Picarx()
 def cpu_temperature():
     raw_cpu_temperature = subprocess.getoutput("cat /sys/class/thermal/thermal_zone0/temp")
     cpu_temperature = round(float(raw_cpu_temperature)/1000,2)               # convert unit
+    print("cpu_temperature:", cpu_temperature)
     return cpu_temperature
 
 def gpu_temperature():
     raw_gpu_temperature = subprocess.getoutput( 'vcgencmd measure_temp' )
     gpu_temperature = round(float(raw_gpu_temperature.replace( 'temp=', '' ).replace( '\'C', '' )), 2)
+    print("gpu_temperature:", gpu_temperature)
     return gpu_temperature
 
-def cpu_usage():
-    result = os.popen("mpstat").read().strip()
-    result = result.split('\n')[-1].split(' ')[-1]
-    result = round(100 - float(result), 2)
-    result = str(result)
-    return result
+# def cpu_usage():
+#     result = os.popen("mpstat").read().strip()
+#     result = result.split('\n')[-1].split(' ')[-1]
+#     result = round(100 - float(result), 2)
+#     result = str(result)
+#     return result
 
 def disk_space():               # disk_space
     p = os.popen("df -h /")
