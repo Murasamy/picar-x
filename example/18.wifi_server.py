@@ -121,7 +121,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if data != b"":
                 # print(data)     
                 Keyborad_control(data)
-                client.sendall(data) # Echo back to client
+                # client.sendall(data) # Echo back to client
                 print("pi_read:", pi_read())
                 client.sendall(pi_read().encode())
                 client.close()
